@@ -17,10 +17,18 @@ while True:
     soup = bs4.BeautifulSoup(soup.text, "html.parser") #скармливаем её парсеру
     print ('---------------------------------------')
     killid = soup.find_all('tr', {"class": "killListRow"}) #находим все теги tr с заданным классом
+
     if killid[0]['killid'] == last_id:
         print ("no new kills", killid[0]['killid'])
+        ('---------------------------------------')
     else:
-        print (killid[0]['killid'])
+        for kill in killid:
+            if kill['killid'] == last_id:
+                print ("all printed")
+                break
+            else:
+                print(kill['killid'])
+        ('---------------------------------------')
         last_id = killid[0]['killid']
         print ("new last id", last_id)
 
