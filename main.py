@@ -34,18 +34,6 @@ while True:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    sl = random.randint(2,5)
+    sl = random.randint(23,32)
     print("Sleep ", sl, " sec")
     time.sleep(sl)
