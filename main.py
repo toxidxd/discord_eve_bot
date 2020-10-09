@@ -16,7 +16,7 @@ def page_request (link):
     return requiredHtml
 
 def page_refresh():
-    browser.refresh
+    browser.refresh()
     time.sleep(5)
 
 
@@ -24,10 +24,11 @@ print ('eve_killboard_parser_by_toxidxd')
 #corp link https://zkillboard.com/corporation/98636833/
 #char link https://zkillboard.com/character/2117056606/
 last_id = 0
-link = "https://zkillboard.com"
+link = "file:///home/toxidxd/Projects/discord_eve_bot/websocket.html"
 
 soup = page_request(link) #запрашиваем страницу
 soup = bs4.BeautifulSoup(soup, "html.parser") #скармливаем её парсеру
+print(type(soup))
 killid = soup.find_all('tr', {"class": "killListRow"}) #находим все теги tr с заданным классом
 last_id = killid[0]['killid']
 print ("last id at start: ", last_id)
@@ -57,7 +58,7 @@ while True:
 
 
 
-    #sl = random.randint(23,32)
-    #print("Sleep ", sl, " sec")
-    #time.sleep(sl)
+    sl = random.randint(23,32)
+    print("Sleep ", sl, " sec")
+    time.sleep(sl)
     print("end of while")
