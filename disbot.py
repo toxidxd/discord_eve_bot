@@ -2,7 +2,7 @@ import discord, requests, json
 import time
 from discord.ext import commands
 
-token = "NzYwMjIzNzQ2MTY1NTcxNjE1.X3I7iQ.h6Kp6urN1yUSaaDNnCG4W1BEVxA"
+token = "NzYwMjIzNzQ2MTY1NTcxNjE1.X3I7iQ.DXjhxSH6V1iKk2TFyfFSfqt60SU"
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
 
@@ -28,8 +28,28 @@ async def fox(ctx,arg):
         iarg=iarg-1
         print(iarg)
 
-@bot.command()
-async def killlog(ctx, arg):
+
+@bot.command(pass_context=True)
+async def killmails(ctx):
+    lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
+
+    while True:
+        killmail = json.loads(requests.get(lnk).text)
+        #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
+        #killid = re.findall(r'killID":(\d+)', killmail.text)
+        if killmail["package"] is None:
+            print("is null!")
+        else:
+            killid = killmail["package"]["killID"]
+            vic_cor_id = killmail["package"]["killmail"]["victim"]["corporation_id"]
+            killlnk = "https://zkillboard.com/kill/" + str(killid)
+            await ctx.send(killlnk)
+            time.sleep(1)
+
+
+
+#@bot.command()
+#async def killlog(ctx, arg):
 
 
 

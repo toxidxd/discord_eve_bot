@@ -1,4 +1,4 @@
-import requests, time, re, json
+import requests, time, json
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
 
@@ -6,7 +6,7 @@ while True:
     killmail = json.loads(requests.get(lnk).text)
     #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
     #killid = re.findall(r'killID":(\d+)', killmail.text)
-    if killmail["package"] == None:
+    if killmail["package"] is None:
         print("is null!")
     else:
         killid = killmail["package"]["killID"]
