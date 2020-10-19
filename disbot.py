@@ -2,7 +2,7 @@ import discord, requests, json
 import time
 from discord.ext import commands
 
-token = "NzYwMjIzNzQ2MTY1NTcxNjE1.X3I7iQ.DXjhxSH6V1iKk2TFyfFSfqt60SU"
+token = ""
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
 
@@ -43,7 +43,10 @@ async def killmails(ctx):
             killid = killmail["package"]["killID"]
             vic_cor_id = killmail["package"]["killmail"]["victim"]["corporation_id"]
             killlnk = "https://zkillboard.com/kill/" + str(killid)
-            await ctx.send(killlnk)
+            if vic_cor_id == 98652899:
+                await ctx.send(killlnk)
+            else:
+                print("no vic")
             time.sleep(1)
 
 
