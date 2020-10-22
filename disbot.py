@@ -28,11 +28,9 @@ async def fox(ctx,arg):
         iarg=iarg-1
         print(iarg)
 
-
 @bot.command(pass_context=True)
 async def killmails(ctx):
     lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
-
     while True:
         killmail = json.loads(requests.get(lnk).text)
         #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
@@ -48,12 +46,5 @@ async def killmails(ctx):
             else:
                 print("no vic")
             time.sleep(1)
-
-
-
-#@bot.command()
-#async def killlog(ctx, arg):
-
-
 
 bot.run(token)
