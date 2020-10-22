@@ -36,15 +36,32 @@ async def killmails(ctx):
         #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
         #killid = re.findall(r'killID":(\d+)', killmail.text)
         if killmail["package"] is None:
-            print("is null!")
+            print("No new killmails.")
         else:
             killid = killmail["package"]["killID"]
-            vic_cor_id = killmail["package"]["killmail"]["victim"]["corporation_id"]
             killlnk = "https://zkillboard.com/kill/" + str(killid)
-            if vic_cor_id == 98652899:
+            print(killlnk)
+
+            try:
+                atckr_corp_id = killmail["package"]["killmail"]["attackers"][0]["corporation_id"]
+                print('Attacker corp_id:', atckr_corp_id)
+            except Exception:
+                atckr_corp_id = 0
+                print("Exception! Attacker is not a member of a corporation.")
+
+            try:
+                vic_corp_id = killmail["package"]["killmail"]["victim"]["corporation_id"]
+                print('Victim corp_id:', vic_corp_id)
+            except Exception:
+                vic_corp_id = 0
+                print('Exception! Victim is mot a member of a corporation.')
+
+            if vic_corp_id == 98652899 or atckr_corp_id == 98652899:
+                print("It's our man!")
                 await ctx.send(killlnk)
             else:
-                print("no vic")
-            time.sleep(1)
+                print("It's not our man!")
+        print('----------------')
+        time.sleep(1)
 
 bot.run(token)
