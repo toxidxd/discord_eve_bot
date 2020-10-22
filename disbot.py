@@ -6,6 +6,8 @@ token = ""
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
 
+
+
 @bot.command(pass_context=True)
 async def test(ctx, arg):
     await ctx.send(arg)
@@ -28,8 +30,11 @@ async def fox(ctx,arg):
         iarg=iarg-1
         print(iarg)
 
-@bot.command(pass_context=True)
-async def killmails(ctx):
+#@bot.command()
+#async def killmails(ctx):
+@bot.event
+async def on_connect():
+    print("on_connect")
     lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
     while True:
         now = datetime.datetime.now()
