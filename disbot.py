@@ -1,5 +1,5 @@
 import discord, requests, json
-import time
+import datetime, time
 from discord.ext import commands
 
 token = ""
@@ -32,6 +32,8 @@ async def fox(ctx,arg):
 async def killmails(ctx):
     lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
     while True:
+        now = datetime.datetime.now()
+        print("Time {}:{}:{}".format(now.hour,now.minute,now.second))
         killmail = json.loads(requests.get(lnk).text)
         #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
         #killid = re.findall(r'killID":(\d+)', killmail.text)
