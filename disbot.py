@@ -2,7 +2,7 @@ import discord, requests, json
 import datetime, time
 from discord.ext import commands
 
-token = ""
+token = "NzYwMjIzNzQ2MTY1NTcxNjE1.X3I7iQ.KXfjE2XsKPWsCJ6gd3_1MltjQQE"
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
 
@@ -30,16 +30,16 @@ async def fox(ctx,arg):
         iarg=iarg-1
         print(iarg)
 
-#@bot.command()
-#async def killmails(ctx):
-@bot.event
-async def on_connect():
-    print("on_connect")
+@bot.command()
+async def killmails(ctx):
+#@bot.event
+#async def on_connect(ctx):
+    print("Connetted! Start recieving killmail's.")
     lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
     while True:
         now = datetime.datetime.now()
-        print("Time {}:{}:{}".format(now.hour,now.minute,now.second))
         killmail = json.loads(requests.get(lnk).text)
+        print("Time {}:{}:{}".format(now.hour,now.minute,now.second))
         #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
         #killid = re.findall(r'killID":(\d+)', killmail.text)
         if killmail["package"] is None:
@@ -47,6 +47,7 @@ async def on_connect():
         else:
             killid = killmail["package"]["killID"]
             killlnk = "https://zkillboard.com/kill/" + str(killid)
+            await ctx.send(killlnk)
             print(killlnk)
 
             try:
