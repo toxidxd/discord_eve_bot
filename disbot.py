@@ -2,7 +2,7 @@ import discord, requests, json
 import datetime, time
 from discord.ext import commands
 
-token = "NzYwMjIzNzQ2MTY1NTcxNjE1.X3I7iQ.KXfjE2XsKPWsCJ6gd3_1MltjQQE"
+token = ""
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
 
@@ -38,7 +38,10 @@ async def killmails(ctx):
     lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
     while True:
         now = datetime.datetime.now()
-        killmail = json.loads(requests.get(lnk).text)
+        try:
+            killmail = json.loads(requests.get(lnk).text)
+        except Exception:
+            print("Request fail")
         print("Time {}:{}:{}".format(now.hour,now.minute,now.second))
         #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
         #killid = re.findall(r'killID":(\d+)', killmail.text)
@@ -47,7 +50,6 @@ async def killmails(ctx):
         else:
             killid = killmail["package"]["killID"]
             killlnk = "https://zkillboard.com/kill/" + str(killid)
-            await ctx.send(killlnk)
             print(killlnk)
 
             try:
