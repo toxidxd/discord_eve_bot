@@ -1,11 +1,11 @@
-import requests, time, json
+import requests
+import time
+import json
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
 
 while True:
     killmail = json.loads(requests.get(lnk).text)
-    #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
-    #killid = re.findall(r'killID":(\d+)', killmail.text)
     if killmail["package"] is None:
         print("No new killmails.")
     else:
@@ -33,7 +33,3 @@ while True:
             print("It's not our man!")
     print('----------------')
     time.sleep(1)
-
-
-
-#j["package"]["killmail"]["victim"]["corporation_id"]

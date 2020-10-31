@@ -1,5 +1,8 @@
-import discord, requests, json
-import datetime, time
+import discord
+import requests
+import json
+import datetime
+import time
 from discord.ext import commands
 
 token = ""
@@ -42,9 +45,9 @@ async def killmails(ctx):
             killmail = json.loads(requests.get(lnk).text)
         except Exception:
             print("Request fail")
-        print("Time {}:{}:{}".format(now.hour,now.minute,now.second))
-        #corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
-        #killid = re.findall(r'killID":(\d+)', killmail.text)
+        print("Time {}:{}:{}".format(now.hour, now.minute, now.second))
+        # corpid = re.findall(r'victim":{"character_id":\d+,"corporation_id":(\d+)', site.text)
+        # killid = re.findall(r'killID":(\d+)', killmail.text)
         if killmail["package"] is None:
             print("No new killmails.")
         else:
