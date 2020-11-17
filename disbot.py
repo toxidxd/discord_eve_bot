@@ -4,12 +4,10 @@ import json
 import datetime
 import time
 from discord.ext import commands
-
+####
 token = ""
 
 bot = commands.Bot(command_prefix='!') #инициализация бота
-
-
 
 @bot.command(pass_context=True)
 async def test(ctx, arg):
