@@ -6,8 +6,12 @@ import time
 from discord.ext import commands
 ####
 print("Script started")
-token = ""
+token = "Nzc4MjA3NjIxMzI4Nzk3NzA2.X7OoUw.wY25SxaeQFhESEODCVwyecf-dzk"
 bot = commands.Bot(command_prefix='!') #инициализация бота
+
+@bot.event
+async def on_ready():
+	print("Bot is ready")
 
 @bot.command(pass_context=True)
 async def test(ctx, arg):
