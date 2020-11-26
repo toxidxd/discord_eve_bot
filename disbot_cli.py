@@ -2,8 +2,8 @@ import discord
 import requests
 import json
 import datetime
-import time
 import config
+import asyncio
 
 
 class MyClient(discord.Client):
@@ -55,11 +55,10 @@ class MyClient(discord.Client):
 					else:
 						print("It's not our man!")
 				print('----------------')
-				time.sleep(3)
-
 			except Exception:
 				print("Request fail")
-				time.sleep(5)
+
+			await asyncio.sleep(5)
 
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd_test'
