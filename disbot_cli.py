@@ -36,7 +36,10 @@ class MyClient(discord.Client):
 					print(killlnk)
 
 					try:
-						atckr_corp_id = killmail["package"]["killmail"]["attackers"][0]["corporation_id"]
+						for atk in killmail["package"]["killmail"]["attackers"]:
+							if atk["corporation_id"] == config.corp_id:
+								atckr_corp_id = atk["corporation_id"]
+
 						print('Attacker corp_id:', atckr_corp_id)
 					except Exception:
 						atckr_corp_id = 0
@@ -55,10 +58,10 @@ class MyClient(discord.Client):
 					else:
 						print("It's not our man!")
 				print('----------------')
+				await asyncio.sleep(1)
 			except Exception:
 				print("Request fail")
-
-			await asyncio.sleep(5)
+				await asyncio.sleep(5)
 
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd_test'
