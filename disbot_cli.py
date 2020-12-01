@@ -36,7 +36,6 @@ class MyClient(discord.Client):
 					print(killlnk)
 
 					try:
-						atckr_corp_id = killmail["package"]["killmail"]["attackers"][0]["corporation_id"]
 						for atk in killmail["package"]["killmail"]["attackers"]:
 							if atk["corporation_id"] == config.corp_id:
 								atckr_corp_id = atk["corporation_id"]
