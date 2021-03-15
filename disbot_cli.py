@@ -61,15 +61,15 @@ class MyClient(discord.Client):
 						print("It's not our man!")
 
 					##################
-					ss_id = killmail["package"]["killmail"]["solar_system_id"]
-					print("Solar system", ss_id)
-					for sol in solars:
-						if sol[0] == ss_id:
-							print('alarm')
-							print("kill in ", sol[1], " ", sol[2])
-							alarm_message = "Kill in " + sol[1] + ", " + sol[2] + "!"
-							await alarm.send(alarm_message)
-							await alarm.send(killlnk)
+					#ss_id = killmail["package"]["killmail"]["solar_system_id"]
+					#print("Solar system", ss_id)
+					#for sol in solars:
+					#	if sol[0] == ss_id:
+					#		print('alarm')
+					#		print("kill in ", sol[1], " ", sol[2])
+					#		alarm_message = "Kill in " + sol[1] + ", " + sol[2] + "!"
+					#		await alarm.send(alarm_message)
+					#		await alarm.send(killlnk)
 
 				print('----------------')
 				await asyncio.sleep(0.2)
