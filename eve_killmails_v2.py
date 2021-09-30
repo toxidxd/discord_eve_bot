@@ -4,6 +4,7 @@ import json
 import datetime
 import config
 import asyncio
+import time
 
 client = discord.Client()
 
@@ -57,6 +58,12 @@ async def on_ready():
         except Exception:
             print("Request fail")
             await asyncio.sleep(5)
+
+        tNow = int(time.strftime("%H%M"))
+
+        if tNow >= 1355:
+            print("Goodbye")
+            exit()
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
 channel_id = config.channel_id
