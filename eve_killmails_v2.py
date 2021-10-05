@@ -61,7 +61,7 @@ async def on_ready():
 
         tNow = int(time.strftime("%H%M"))
 
-        if tNow >= 1355:
+        if 1355 <= tNow <= 1400:
             print("Goodbye")
             exit()
 
