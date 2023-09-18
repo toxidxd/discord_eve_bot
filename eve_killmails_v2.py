@@ -6,11 +6,14 @@ import config
 import asyncio
 import time
 
+
 client = discord.Client()
+
 
 @client.event
 async def on_connect():
     print('Bot connected')
+
 
 @client.event
 async def on_ready():
@@ -59,11 +62,12 @@ async def on_ready():
             print("Request fail")
             await asyncio.sleep(5)
 
-        tNow = int(time.strftime("%H%M"))
+        t_now = int(time.strftime("%H%M"))
 
-        if 1355 <= tNow <= 1400:
+        if 1355 <= t_now <= 1400:
             print("Goodbye")
             exit()
+
 
 lnk = 'https://redisq.zkillboard.com/listen.php?queueID=toxidxd'
 channel_id = config.channel_id
